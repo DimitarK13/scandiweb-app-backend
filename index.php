@@ -38,10 +38,9 @@
     case 'DELETE': 
       $sql = 'DELETE FROM products WHERE p_sku = :sku';
       $path = explode('/', $_SERVER['REQUEST_URI']);
-      print_r($path);
 
       $stmt = $conn->prepare($sql);
-      $stmt->bindParam(':sku', $path[4]);
+      $stmt->bindParam(':sku', $path[3]);
 
       if ($stmt->execute()) {
         $response = ['status' => 1, 'message' => 'Deleted successfully'];
